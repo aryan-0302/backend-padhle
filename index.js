@@ -39,7 +39,7 @@ app.use(cookieParser());
 // this is considered a cross-origin request. The browser will block this request unless the backend explicitly allows it through CORS.
 
 app.use(cors({
-  origin: "https://frontend-padhle-msd2.vercel.app", 
+  origin: "https://frontend-padhle-prks.vercel.app", 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
   credentials: true 
 }));
