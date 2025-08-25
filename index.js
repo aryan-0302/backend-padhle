@@ -19,6 +19,12 @@ import generatequiz from "./routes/GenerateQuiz.js"
 import smartNotes from "./routes/SmartNotes.js"
 import doubtRoutes from "./routes/doubtRoutes.js"
 
+app.use(cors({
+  origin: 'https://frontend-padhle-prks.vercel.app', // your frontend
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  credentials: true
+}));
+
 import dotenv from "dotenv"
 dotenv.config();
 
@@ -37,8 +43,6 @@ app.use(cookieParser());
 // CORS is used to interact frontend and backend hosted at different port/domain.
 // When your frontend (React) makes an API request to the backend (Express) using Axios (or any other HTTP client),
 // this is considered a cross-origin request. The browser will block this request unless the backend explicitly allows it through CORS.
-
-app.use(cors());
 
 
 app.use(fileUpload({
