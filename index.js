@@ -19,11 +19,20 @@ import generatequiz from "./routes/GenerateQuiz.js"
 import smartNotes from "./routes/SmartNotes.js"
 import doubtRoutes from "./routes/doubtRoutes.js"
 
-app.use(cors({
-  origin: 'https://frontend-padhle-prks.vercel.app', // your frontend
-  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ['https://frontend-padhle-prks.vercel.app'];
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+
 
 import dotenv from "dotenv"
 dotenv.config();
